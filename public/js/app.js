@@ -2377,6 +2377,7 @@ function CardWrapper(_ref) {
         }), !adminMode || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           className: "flex flex-col ml-4",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+            href: card.route_edit,
             className: "flex flex-row sm:flex-col items-center",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
               className: "w-8 h-8 stroke-current text-blue-500",

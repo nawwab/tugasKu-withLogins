@@ -14,6 +14,10 @@ class DashboardController extends Controller
     public function index() {
         $homeworks = Homework::get();
 
+        foreach ($homeworks as $homework) {
+            $homework['route_edit'] = route('homework.edit', ['edit' => $homework->id]);
+        }
+
         return view('dashboard', [
             'data' => json_encode($homeworks),
             'isAdmin' => True

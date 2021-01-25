@@ -21,7 +21,7 @@ function CardWrapper({adminMode, cardsData, emptyComponent}) {
                 />
                 { !adminMode ||
                 <div className="flex flex-col ml-4">
-                    <a className="flex flex-row sm:flex-col items-center">
+                    <a href={card.route_edit} className="flex flex-row sm:flex-col items-center">
                         <svg className="w-8 h-8 stroke-current text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
                         </svg>

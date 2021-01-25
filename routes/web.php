@@ -40,7 +40,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 //homework
 Route::get('/dashboard/create', [HomeworkController::class, 'index'])->name('homework.create');
-Route::post('/dashboard', [HomeworkController::class, 'store'])->name('homework');
+Route::post('/dashboard', [HomeworkController::class, 'store'])->name('homework.store');
+Route::get('/dashboard/edit/{edit}', [HomeworkController::class, 'edit'])->name('homework.edit');
+Route::put('/dashboard/{edit}', [HomeworkController::class, 'update'])->name('homework.update');
+Route::delete('/dashboard/{homework}', [HomeworkController::class, 'destroy'])->name('homework.delete');
 
 //all non admin page
 Route::get('/', [StaticPageController::class, 'index'])->name('homepage');

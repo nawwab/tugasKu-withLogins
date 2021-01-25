@@ -5,7 +5,7 @@
     <div class="bg-white rounded p-8">
         <h1 class="text-2xl mb-4">Create a Homework</h1>
 
-        <form action="{{ route('homework') }}" method="post">
+        <form action="{{ route('homework.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="flex">
                 <div class="flex flex-col mr-8">
@@ -87,7 +87,7 @@
                 <div class="mb-4">
                     <label for="details">Detail<span class="text-red-600">*</span></label>
                     <textarea class="p-2 rounded border @error('details') border-red-600 @enderror w-full bg-gray-100"
-                    name="details" id="details" cols="30" rows="10"></textarea>
+                    name="details" id="details" cols="30" rows="10">{{ old('details') }}</textarea>
                     @error('details')
                         <div class="text-red-600">
                             {{ $message }}

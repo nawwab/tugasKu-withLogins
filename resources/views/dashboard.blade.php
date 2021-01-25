@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="w-full py-16 px-16 flex flex-col items-center lg:mb-2">
-        <div class="flex flex-col mr-16 ">
+    <div class="w-full py-16 px-16 flex flex-col items-center justify-between lg:mb-2">
+        <div class="w-full flex justify-between">
+            <div class="flex flex-col mr-16 ">
                 <h1 class="font-bold text-3xl sm:text-4xl leading-tight mb-2 text-center sm:text-left">Selamat datang admin</h1>
                 <p class="text-gray-700 text-base text-center sm:text-left">
                     Buat, Teliti, Perbarui, dan Hapus tugas-tugas disini.
