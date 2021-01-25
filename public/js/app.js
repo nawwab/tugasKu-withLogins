@@ -2043,7 +2043,7 @@ function EmptyMessage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "items-center justify-center flex",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
-      className: "w-16 h-16 stroke-current text-blue-500 mr-4",
+      className: "w-16 h-16 stroke-current text-blue-500 mr-8",
       fill: "none",
       stroke: "currentColor",
       viewBox: "0 0 24 24",

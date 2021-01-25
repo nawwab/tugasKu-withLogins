@@ -95,7 +95,7 @@ function EmptyMessage() {
     return (
         <div className="items-center justify-center flex">
             <svg
-                className="w-16 h-16 stroke-current text-blue-500 mr-4"
+                className="w-16 h-16 stroke-current text-blue-500 mr-8"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
