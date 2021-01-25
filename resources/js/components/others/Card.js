@@ -104,7 +104,7 @@ function Card({
         );
     }
     return (
-        <div className="bg-white border w-full rounded-lg mb-6 shadow-lg flex-grow">
+        <div className="bg-white flex-grow border rounded-lg mb-6 shadow-lg">
             <div className="px-4 py-2 rounded-t-lg mb-4 bg-green-500">
                 <span className="text-white font-semibold">
                     {deadline_date} {deadline_time ? ", " + deadline_time : ""}

@@ -74,6 +74,23 @@ function Testimony() {
     );
 }
 
+function AdminNoDataFound() {
+    return (
+        <div className="hidden lg:flex lg:items-center">
+            <svg className="w-10 h-10 mr-8 stroke-current text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span className="text-center leading-tight flex items-center text-xl">
+                Cari kartu yang ada di kolom pencarian dan klik
+                <svg className="w-4 h-4 stroke-current font-semibold text-blue-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                untuk edit dan hapus
+            </span>
+        </div>
+    );
+}
+
 function EmptyMessage() {
     return (
         <div className="items-center justify-center flex">
@@ -91,8 +108,8 @@ function EmptyMessage() {
                     d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 ></path>
             </svg>
-            <span className="text-center leading-tight text-gray-700">
-                Data tidak ditemukan (hooray?), silahkan lihat panduan mengapa
+            <span className="text-center leading-tight text-xl text-gray-700">
+                Data tidak ditemukan (hooray?), silahkan lihat <a className="font-semibold text-blue-500 underline" href="/help">panduan</a> mengapa
                 data tidak ditemukan
             </span>
         </div>
@@ -128,7 +145,7 @@ function CardSearcher({ data, isAdmin }) {
             });
             setNoDataFoundComponent(<EmptyMessage />);
         } else {
-            setNoDataFoundComponent(<Testimony />);
+            setNoDataFoundComponent(<AdminNoDataFound />);
         }
 
         if (groupValue !== "all") {
@@ -148,47 +165,45 @@ function CardSearcher({ data, isAdmin }) {
     }
 
     return (
-        <div className="max-w-4xl">
-            {isLoaded ? (
-                <>
-                    <div className="py-4 px-4 mx-auto">
-                        <SearchBar
-                            searchBarOnChange={handleSearchChange}
-                            selectedGroup={groupValue}
-                            groupOnChange={handleGroupChange}
-                        />
-                    </div>
-                    <div className="px-4 lg:pt-4">
-                        <CardWrapper
-                            adminMode={isAdmin ? true : false}
-                            cardsData={filtered}
-                            emptyComponent={noDataFoundComponent}
-                        />
-                    </div>
-                </>
-            ) : (
-                <div className="flex items-center justify-center">
-                    <svg
-                        className="w-6 h-6 animate-spin mr-2 stroke-current text-gray-500"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                        ></path>
-                    </svg>
-                    <span className="font-medium text-gray-500">
-                        Memuat tugas...
-                    </span>
+        isLoaded ? (
+            <div className="flex flex-col">
+                <div className="py-4">
+                    <SearchBar
+                        searchBarOnChange={handleSearchChange}
+                        selectedGroup={groupValue}
+                        groupOnChange={handleGroupChange}
+                    />
                 </div>
-            )}
-        </div>
-    );
+                <div className="lg:pt-4">
+                    <CardWrapper
+                        adminMode={isAdmin ? true : false}
+                        cardsData={filtered}
+                        emptyComponent={noDataFoundComponent}
+                    />
+                </div>
+            </div>
+        ) : (
+            <div className="flex items-center justify-center py-4">
+                <svg
+                    className="w-6 h-6 animate-spin mr-2 stroke-current text-gray-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                    ></path>
+                </svg>
+                <span className="font-medium text-gray-500">
+                    Memuat tugas...
+                </span>
+            </div>
+        )
+    )
 }
 
 export default CardSearcher;

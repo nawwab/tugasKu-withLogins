@@ -127,6 +127,8 @@
 </div>
 
 <script>
+    let inputElement = document.getElementById('file_attachments');
+    if (inputElement.length)
     function alertBeforeDelete() {
         confirm('are you sure to delete this homework?')
     }

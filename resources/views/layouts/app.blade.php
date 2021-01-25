@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
-    <body class="flex flex-col justify-between min-h-screen">
+    <body class="flex flex-col justify-between min-h-screen text-gray-700">
             <nav class="flex justify-between items-center w-full py-4 md:px-8 px-4 bg-white">
                 <div class="flex items-center">
                     <a class="mr-4" href="/">
@@ -37,9 +37,9 @@
                     @endguest
                 </div>
             </nav>
-            <div class="md:px-8 px-4 py-8 max-w-4xl mx-auto">
-                @yield('content')
-            </div>
+
+            @yield('content')
+
             <footer class="flex items-center justify-center w-full bg-white">
                 <span class="p-4">created in jogja</span>
             </footer>

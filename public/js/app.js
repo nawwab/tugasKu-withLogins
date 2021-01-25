@@ -1920,7 +1920,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2004,6 +2003,40 @@ function Testimony() {
   });
 }
 
+function AdminNoDataFound() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: "hidden lg:flex lg:items-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
+      className: "w-10 h-10 mr-8 stroke-current text-blue-500",
+      fill: "none",
+      stroke: "currentColor",
+      viewBox: "0 0 24 24",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: "2",
+        d: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+      className: "text-center leading-tight flex items-center text-xl",
+      children: ["Cari kartu yang ada di kolom pencarian dan klik", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
+        className: "w-4 h-4 stroke-current font-semibold text-blue-500 inline",
+        fill: "none",
+        stroke: "currentColor",
+        viewBox: "0 0 24 24",
+        xmlns: "http://www.w3.org/2000/svg",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: "2",
+          d: "M9 5l7 7-7 7"
+        })
+      }), "untuk edit dan hapus"]
+    })]
+  });
+}
+
 function EmptyMessage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "items-center justify-center flex",
@@ -2019,9 +2052,13 @@ function EmptyMessage() {
         strokeWidth: "2",
         d: "M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-      className: "text-center leading-tight text-gray-700",
-      children: "Data tidak ditemukan (hooray?), silahkan lihat panduan mengapa data tidak ditemukan"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+      className: "text-center leading-tight text-xl text-gray-700",
+      children: ["Data tidak ditemukan (hooray?), silahkan lihat ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+        className: "font-semibold text-blue-500 underline",
+        href: "/help",
+        children: "panduan"
+      }), " mengapa data tidak ditemukan"]
     })]
   });
 }
@@ -2082,7 +2119,7 @@ function CardSearcher(_ref) {
       });
       setNoDataFoundComponent( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(EmptyMessage, {}));
     } else {
-      setNoDataFoundComponent( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Testimony, {}));
+      setNoDataFoundComponent( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdminNoDataFound, {}));
     }
 
     if (groupValue !== "all") {
@@ -2102,43 +2139,41 @@ function CardSearcher(_ref) {
     setGroupValue(value);
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    className: "max-w-4xl",
-    children: isLoaded ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "py-4 px-4 mx-auto",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_others_SearchBar__WEBPACK_IMPORTED_MODULE_3__.default, {
-          searchBarOnChange: handleSearchChange,
-          selectedGroup: groupValue,
-          groupOnChange: handleGroupChange
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "px-4 lg:pt-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_others_CardWrapper__WEBPACK_IMPORTED_MODULE_4__.default, {
-          adminMode: isAdmin ? true : false,
-          cardsData: filtered,
-          emptyComponent: noDataFoundComponent
-        })
-      })]
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "flex items-center justify-center",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
-        className: "w-6 h-6 animate-spin mr-2 stroke-current text-gray-500",
-        fill: "none",
-        stroke: "currentColor",
-        viewBox: "0 0 24 24",
-        xmlns: "http://www.w3.org/2000/svg",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
-          strokeLinecap: "round",
-          strokeLinejoin: "round",
-          strokeWidth: "2",
-          d: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-        className: "font-medium text-gray-500",
-        children: "Memuat tugas..."
-      })]
-    })
+  return isLoaded ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: "flex flex-col",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "py-4",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_others_SearchBar__WEBPACK_IMPORTED_MODULE_3__.default, {
+        searchBarOnChange: handleSearchChange,
+        selectedGroup: groupValue,
+        groupOnChange: handleGroupChange
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "lg:pt-4",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_others_CardWrapper__WEBPACK_IMPORTED_MODULE_4__.default, {
+        adminMode: isAdmin ? true : false,
+        cardsData: filtered,
+        emptyComponent: noDataFoundComponent
+      })
+    })]
+  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: "flex items-center justify-center py-4",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
+      className: "w-6 h-6 animate-spin mr-2 stroke-current text-gray-500",
+      fill: "none",
+      stroke: "currentColor",
+      viewBox: "0 0 24 24",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: "2",
+        d: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+      className: "font-medium text-gray-500",
+      children: "Memuat tugas..."
+    })]
   });
 }
 
@@ -2287,7 +2322,7 @@ function Card(_ref2) {
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    className: "bg-white border w-full rounded-lg mb-6 shadow-lg flex-grow",
+    className: "bg-white flex-grow border rounded-lg mb-6 shadow-lg",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "px-4 py-2 rounded-t-lg mb-4 bg-green-500",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
@@ -2363,7 +2398,7 @@ function CardWrapper(_ref) {
   if (cardsData.length > 0) {
     listsCard = cardsData.map(function (card) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "flex items-center w-full",
+        className: "flex w-full items-center",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Card__WEBPACK_IMPORTED_MODULE_3__.default, {
           abbrev: card.abbrev,
           deadline_date: card.deadline_date,
@@ -2375,7 +2410,7 @@ function CardWrapper(_ref) {
           subject: card.subject,
           user_id: card.user_id
         }), !adminMode || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-          className: "flex flex-col ml-4",
+          className: "flex flex-initial flex-col ml-4",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
             href: card.route_edit,
             className: "flex flex-row sm:flex-col items-center",
@@ -2401,7 +2436,7 @@ function CardWrapper(_ref) {
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    className: "w-full flex flex-col items-center",
+    className: "flex flex-col items-center",
     children: listsCard
   });
 }
@@ -2456,9 +2491,9 @@ function SearchBar(_ref) {
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    className: "border w-full rounded-lg py-2 px-4 flex flex-col lg:flex-row lg:justify-between items-center lg:mb-0 mb-2",
+    className: "border rounded-lg px-4 py-2 flex flex-col lg:flex-row lg:justify-between items-center lg:mb-0 mb-2",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "flex items-center flex-1 w-full",
+      className: "flex flex-grow items-center",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: "inline-block mr-2",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
