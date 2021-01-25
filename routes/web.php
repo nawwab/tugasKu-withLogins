@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeworkController;
+use App\Http\Controllers\StaticPageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +19,30 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('homepage');
+})->name('homepage');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+//auth
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
+
+//dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+//homework
+Route::get('/dashboard/create', [HomeworkController::class, 'index'])->name('homework.create');
+Route::post('/dashboard', [HomeworkController::class, 'store'])->name('homework');
+
+//all non admin page
+Route::get('/', [StaticPageController::class, 'index'])->name('homepage');
+Route::get('/about', [StaticPageController::class, 'about'])->name('about');
+Route::get('/help', [StaticPageController::class, 'help'])->name('help');
