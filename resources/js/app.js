@@ -13,3 +13,4 @@ require('./bootstrap');
  */
 
 require('./components/CardSearcher.js');
+require('./components/others/Card.js');

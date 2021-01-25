@@ -2,7 +2,7 @@
 
 @section('content')
 <main class="flex justify-center">
-    <div class="max-w-4xl px-4">
+    <div class="max-w-4xl px-4 py-8">
         <h1 class="font-bold text-4xl leading-tight mb-2 text-center">Temukan tugasmu dengan Mudah.</h1>
         <p class="text-gray-700 text-base text-center   ">
             kami para kontributor menyatukan semua tugas Teknik Informatika yang terpencar

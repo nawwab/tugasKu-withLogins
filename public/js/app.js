@@ -1855,6 +1855,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/CardSearcher.js */ "./resources/js/components/CardSearcher.js");
 
+__webpack_require__(/*! ./components/others/Card.js */ "./resources/js/components/others/Card.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -2203,8 +2205,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -2218,6 +2221,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 
 
 
@@ -2273,8 +2277,8 @@ function Details(_ref) {
 }
 
 Details.propTypes = {
-  details: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string),
-  file_attachments: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string)
+  details: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  file_attachments: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string)
 };
 
 function Card(_ref2) {
@@ -2356,14 +2360,31 @@ function Card(_ref2) {
 }
 
 Card.propTypes = {
-  abbrev: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string),
-  deadline_date: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string),
-  deadline_time: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string),
-  group: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string),
-  source: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string),
-  subject: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string)
+  abbrev: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  deadline_date: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  deadline_time: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  group: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  source: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  subject: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string)
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Card);
+
+if (document.getElementById("card-react")) {
+  var data = document.getElementById("card-react").getAttribute("data");
+  var props = JSON.parse(data);
+  console.log(props);
+  react_dom__WEBPACK_IMPORTED_MODULE_2__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Card, {
+    abbrev: props.abbrev,
+    deadline_date: props.deadline_date,
+    deadline_time: props.deadline_time,
+    details: props.details,
+    file_attachments: props.file_attachments,
+    group: props.group,
+    source: props.source,
+    subject: props.subject,
+    user_id: props.user_id
+  }), document.getElementById("card-react"));
+}
 
 /***/ }),
 

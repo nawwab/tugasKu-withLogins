@@ -2,7 +2,7 @@
 
 @section('content')
 <main class="flex justify-center">
-    <div class="w-full md:w-8/12 p-4">
+    <div class="w-full md:w-8/12 px-4 py-8">
         <div class="flex flex-col sm:flex-row w-full justify-between items-center">
             <div class="flex flex-col flex-1 sm:mr-8">
                 <h1 class="font-bold text-2xl sm:text-4xl leading-tight mb-2 text-center sm:text-left">Selamat datang {{Auth::user()->name}}</h1>

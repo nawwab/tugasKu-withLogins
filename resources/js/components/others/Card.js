@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
 const documentIcon = (
@@ -103,6 +104,7 @@ function Card({
             </>
         );
     }
+
     return (
         <div className="bg-white flex-grow border rounded-lg mb-6 shadow-lg">
             <div className="px-4 py-2 rounded-t-lg mb-4 bg-green-500">
@@ -148,3 +150,23 @@ Card.propTypes = {
 };
 
 export default Card;
+
+if (document.getElementById("card-react")) {
+    let data = document.getElementById("card-react").getAttribute("data");
+    let props = JSON.parse(data);
+    console.log(props);
+    ReactDOM.render(
+        <Card
+            abbrev = {props.abbrev}
+            deadline_date = {props.deadline_date}
+            deadline_time = {props.deadline_time}
+            details = {props.details}
+            file_attachments = {props.file_attachments}
+            group = {props.group}
+            source = {props.source}
+            subject = {props.subject}
+            user_id = {props.user_id}
+        />,
+        document.getElementById("card-react")
+    );
+}
