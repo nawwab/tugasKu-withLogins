@@ -25,16 +25,8 @@ function Details({ details, file_attachments }) {
     if (file_attachments) {
         let attachmentIcon = documentIcon;
 
-        // if (attachment.type === "document") {
-        //     attachmentIcon = documentIcon
-        // } else if (attachment.type === "video") {
-        //     attachmentIcon = videoIcon
-        // } else {
-        //     attachmentIcon = urlIcon
-        // }
-
         attachmentBox = (
-            <div className="flex bg-gray-100 p-2 rounded-md mt-2 items-center">
+            <div className="flex bg-gray-100 mt-4 p-2 rounded-md items-center">
                 {attachmentIcon}
                 <a
                     href={`/file_attachments/${file_attachments}`}
@@ -48,11 +40,9 @@ function Details({ details, file_attachments }) {
     }
 
     return (
-        <div className="mt-4">
-            <div className="p-4 border-t">
-                <span>{details}</span>
-                {attachmentBox == undefined || attachmentBox}
-            </div>
+        <div className="p-4 border-t">
+            <span className="text-sm">{details}</span>
+            {attachmentBox == undefined || attachmentBox}
         </div>
     );
 }
@@ -106,13 +96,13 @@ function Card({
     }
 
     return (
-        <div className="bg-white flex-grow border rounded-lg mb-6 shadow-lg">
+        <div className="bg-white flex-grow border rounded-lg mb-4 shadow-lg">
             <div className="px-4 py-2 rounded-t-lg mb-4 bg-green-500">
                 <span className="text-white font-semibold">
                     {deadline_date} {deadline_time ? ", " + deadline_time : ""}
                 </span>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mb-4">
                 <div className="px-4 flex items-center">{cardName}</div>
                 {source ? (
                     <a href={source} className="pr-4">

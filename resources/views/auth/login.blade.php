@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="w-full py-4 px-4 flex flex-col items-center lg:mb-2">
-    <div class="bg-white rounded p-8">
+<main class="flex justify-center">
+    <div class="w-full md:w-4/12 px-4 py-8">
         <h1 class="text-2xl mb-4">Login</h1>
         @if (session()->has('status'))
             <div class="w-full p-2 text-white bg-red-500 rounded mb-4 text-center">
@@ -48,5 +48,5 @@
             </div>
         </form>
     </div>
-</div>
+</main>
 @endsection

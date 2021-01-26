@@ -2009,7 +2009,7 @@ function AdminNoDataFound() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "hidden lg:flex lg:items-center",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
-      className: "w-10 h-10 mr-8 stroke-current text-blue-500",
+      className: "w-10 h-16 mr-10 stroke-current text-blue-500",
       fill: "none",
       stroke: "currentColor",
       viewBox: "0 0 24 24",
@@ -2021,19 +2021,10 @@ function AdminNoDataFound() {
         d: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-      className: "text-center leading-tight flex items-center text-xl",
-      children: ["Cari kartu yang ada di kolom pencarian dan klik", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
-        className: "w-4 h-4 stroke-current font-semibold text-blue-500 inline",
-        fill: "none",
-        stroke: "currentColor",
-        viewBox: "0 0 24 24",
-        xmlns: "http://www.w3.org/2000/svg",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
-          strokeLinecap: "round",
-          strokeLinejoin: "round",
-          strokeWidth: "2",
-          d: "M9 5l7 7-7 7"
-        })
+      className: "text-center leading-tight text-xl",
+      children: ["Cari kartu yang ada di kolom pencarian dan klik", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "font-semibold text-blue-500",
+        children: " > "
       }), "untuk edit dan hapus"]
     })]
   });
@@ -2041,9 +2032,9 @@ function AdminNoDataFound() {
 
 function EmptyMessage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    className: "items-center justify-center flex",
+    className: "hidden lg:flex lg:items-center",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
-      className: "w-16 h-16 stroke-current text-blue-500 mr-8",
+      className: "w-10 h-10 mr-8 stroke-current text-blue-500",
       fill: "none",
       stroke: "currentColor",
       viewBox: "0 0 24 24",
@@ -2055,7 +2046,7 @@ function EmptyMessage() {
         d: "M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-      className: "text-center leading-tight text-xl text-gray-700",
+      className: "text-center leading-tight text-xl",
       children: ["Data tidak ditemukan (hooray?), silahkan lihat ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
         className: "font-semibold text-blue-500 underline",
         href: "/help",
@@ -2121,7 +2112,7 @@ function CardSearcher(_ref) {
       });
       setNoDataFoundComponent( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(EmptyMessage, {}));
     } else {
-      setNoDataFoundComponent( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdminNoDataFound, {}));
+      setNoDataFoundComponent(isAdmin ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdminNoDataFound, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Testimony, {}));
     }
 
     if (groupValue !== "all") {
@@ -2246,16 +2237,9 @@ function Details(_ref) {
   var attachmentBox;
 
   if (file_attachments) {
-    var attachmentIcon = documentIcon; // if (attachment.type === "document") {
-    //     attachmentIcon = documentIcon
-    // } else if (attachment.type === "video") {
-    //     attachmentIcon = videoIcon
-    // } else {
-    //     attachmentIcon = urlIcon
-    // }
-
+    var attachmentIcon = documentIcon;
     attachmentBox = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "flex bg-gray-100 p-2 rounded-md mt-2 items-center",
+      className: "flex bg-gray-100 mt-4 p-2 rounded-md items-center",
       children: [attachmentIcon, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
         href: "/file_attachments/".concat(file_attachments),
         download: true,
@@ -2265,14 +2249,12 @@ function Details(_ref) {
     });
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    className: "mt-4",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "p-4 border-t",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-        children: details
-      }), attachmentBox == undefined || attachmentBox]
-    })
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: "p-4 border-t",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+      className: "text-sm",
+      children: details
+    }), attachmentBox == undefined || attachmentBox]
   });
 }
 
@@ -2326,7 +2308,7 @@ function Card(_ref2) {
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    className: "bg-white flex-grow border rounded-lg mb-6 shadow-lg",
+    className: "bg-white flex-grow border rounded-lg mb-4 shadow-lg",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "px-4 py-2 rounded-t-lg mb-4 bg-green-500",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
@@ -2334,7 +2316,7 @@ function Card(_ref2) {
         children: [deadline_date, " ", deadline_time ? ", " + deadline_time : ""]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "flex items-center justify-between",
+      className: "flex items-center justify-between mb-4",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: "px-4 flex items-center",
         children: cardName

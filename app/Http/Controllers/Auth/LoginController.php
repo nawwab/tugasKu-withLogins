@@ -22,7 +22,7 @@ class LoginController extends Controller
         ]);
 
         if( !auth()->attempt($request->only('email', 'password'), $request->remember) ) {
-            return back()->with('status', 'invalid login details');
+            return back()->with('status', 'The username and password you entered did not match our records');
         }
 
         return redirect()->route('dashboard');
