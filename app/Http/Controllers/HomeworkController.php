@@ -26,7 +26,7 @@ class HomeworkController extends Controller
         if ( isset($request->file_attachments) ) {
             $fileName = $request->file_attachments->getClientOriginalName();
             $fileName = explode('.', $fileName)[0];
-            $uploadName = $fileName . "-" . time() . $request->file_attachments->extension();
+            $uploadName = $fileName . "-" . time() . "." . $request->file_attachments->getClientOriginalExtension();
             $request->file_attachments->move(public_path("file_attachments"), $uploadName);
         } else {
             $uploadName = null;
@@ -69,13 +69,14 @@ class HomeworkController extends Controller
             'details' => 'nullable|max:240'
         ]);
 
+        dd("." . $request->file_attachments->getClientOriginalExtension());
 
         if ( isset($request->file_attachments) && is_string($request->file_attachments) ) {
             $uploadName = $request->file_attachemnts;
         } elseif ( isset($request->file_attachments) ) {
             $fileName = $request->file_attachments->getClientOriginalName();
             $fileName = explode('.', $fileName)[0];
-            $uploadName = $fileName . "-" . time() . "." . $request->file_attachments->extension();
+            $uploadName = $fileName . "-" . time() . "." . $request->file_attachments->getClientOriginalExtension();
             $request->file_attachments->move(public_path("file_attachments"), $uploadName);
         } else {
             $uploadName = null;
