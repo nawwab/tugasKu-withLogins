@@ -69,30 +69,28 @@ class HomeworkController extends Controller
             'details' => 'nullable|max:240'
         ]);
 
-        dd("." . $request->file_attachments->getClientOriginalExtension());
+      $input_empty = (bool) $request->is_empty;
+      $old_file = $homework->file_attachments;
 
-        if ( isset($request->file_attachments) && is_string($request->file_attachments) ) {
-            $uploadName = $request->file_attachemnts;
-        } elseif ( isset($request->file_attachments) ) {
-            $fileName = $request->file_attachments->getClientOriginalName();
-            $fileName = explode('.', $fileName)[0];
-            $uploadName = $fileName . "-" . time() . "." . $request->file_attachments->getClientOriginalExtension();
-            $request->file_attachments->move(public_path("file_attachments"), $uploadName);
-        } else {
-            $uploadName = null;
-        }
+      if ( isset($request->file_attachments) ) {
+         $fileName = $request->file_attachments->getClientOriginalName();
+         $fileName = explode('.', $fileName)[0];
+         $uploadName = $fileName . "-" . time() . "." . $request->file_attachments->getClientOriginalExtension();
+         $request->file_attachments->move(public_path("file_attachments"), $uploadName);
+      } else {
+         $uploadName = $input_empty ? null : $old_file;
+      }
 
-        $homework->subject = $request->subject;
-        $homework->abbrev = $request->abbrev;
-        $homework->source = $request->source;
-        $homework->deadline_date = $request->deadline_date;
-        $homework->deadline_time = $request->deadline_time;
-        $homework->group = $request->group;
-        $homework->file_attachments = $uploadName;
-        $homework->details = $request->details;
-        $homework->save();
-
-        return redirect()->route('dashboard');
+      $homework->subject = $request->subject;
+      $homework->abbrev = $request->abbrev;
+      $homework->source = $request->source;
+      $homework->deadline_date = $request->deadline_date;
+      $homework->deadline_time = $request->deadline_time;
+      $homework->group = $request->group;
+      $homework->file_attachments = $uploadName;
+      $homework->details = $request->details;
+      $homework->save();
+      return redirect()->route('dashboard');
     }
 
     public function destroy(Homework $homework) {

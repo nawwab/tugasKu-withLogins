@@ -1857,6 +1857,8 @@ __webpack_require__(/*! ./components/CardSearcher.js */ "./resources/js/componen
 
 __webpack_require__(/*! ./components/others/Card.js */ "./resources/js/components/others/Card.js");
 
+__webpack_require__(/*! ./components/others/FileInput.js */ "./resources/js/components/others/FileInput.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -1886,7 +1888,7 @@ try {
 
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -2255,7 +2257,7 @@ function Card(_ref2) {
       className: "px-4 py-2 rounded-t-lg mb-4 bg-green-500",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
         className: "text-white font-semibold",
-        children: [deadline_date, " ", deadline_time ? ", " + deadline_time : ""]
+        children: [deadline_date, " ", deadline_time ? ", ".concat(deadline_time) : ""]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
       className: "flex items-center justify-between mb-4",
@@ -2296,7 +2298,6 @@ Card.propTypes = {
 if (document.getElementById("card-react")) {
   var data = document.getElementById("card-react").getAttribute("data");
   var props = JSON.parse(data);
-  console.log(props);
   react_dom__WEBPACK_IMPORTED_MODULE_2__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Card, {
     abbrev: props.abbrev,
     deadline_date: props.deadline_date,
@@ -2436,16 +2437,144 @@ function EmptyMessage() {
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
       className: "text-center leading-tight text-xl",
-      children: ["Data tidak ditemukan (hooray?), silahkan lihat ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+      children: ["Data tidak ditemukan (hooray?), silahkan lihat", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
         className: "font-semibold text-blue-500 underline",
         href: "/help",
         children: "panduan"
-      }), " mengapa data tidak ditemukan"]
+      }), " ", "mengapa data tidak ditemukan"]
     })]
   });
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EmptyMessage);
+
+/***/ }),
+
+/***/ "./resources/js/components/others/FileInput.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/others/FileInput.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+ // import PropTypes from "prop-types";
+
+
+
+function FileInput(_ref) {
+  var value = _ref.value;
+  var fileInput = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(value ? value : null),
+      _useState2 = _slicedToArray(_useState, 2),
+      file = _useState2[0],
+      setFile = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    console.log('value :' + value);
+    console.log('file: ' + file);
+    console.log('fileExist: ' + file ? true : 0);
+  });
+
+  function deleteFile() {
+    fileInput.current.value = null;
+    setFile(null);
+  }
+
+  function fileOnChange(e) {
+    var file = e.target.files[0];
+    setFile(file.name);
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "".concat(file ? "flex" : "hidden", " items-center"),
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "p-2 rounded border bg-gray-100 mr-2",
+        children: file
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
+        onClick: deleteFile,
+        className: "w-6 h-6 stroke-current text-red-500",
+        fill: "none",
+        stroke: "currentColor",
+        viewBox: "0 0 24 24",
+        xmlns: "http://www.w3.org/2000/svg",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: "2",
+          d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+      htmlFor: "file_attachments",
+      className: "".concat(file ? "hidden" : "flex"),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "flex items-center p-2 bg-gray-100 border rounded",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
+          className: "w-6 h-6  mr-2",
+          fill: "none",
+          stroke: "currentColor",
+          viewBox: "0 0 24 24",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: "2",
+            d: "M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+          })
+        }), "Tambahkan File", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+          className: "opacity-0 absolute inline-block w-40 h-full",
+          ref: fileInput,
+          onChange: fileOnChange,
+          type: "file",
+          name: "file_attachments",
+          id: "file_attachments"
+        })]
+      })
+    }), !file ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+      className: "hidden",
+      type: "text",
+      defaultValue: "True",
+      name: "is_empty",
+      id: "is_empty"
+    }) : null]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FileInput);
+
+if (document.getElementById("file-input")) {
+  var file = document.getElementById("file-input").getAttribute("file");
+  console.log(_typeof(file));
+  react_dom__WEBPACK_IMPORTED_MODULE_2__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(FileInput, {
+    value: file
+  }), document.getElementById("file-input"));
+}
 
 /***/ }),
 

@@ -3,13 +3,13 @@
 @section('content')
 <div class="w-full py-4 px-4 flex flex-col items-center lg:mb-2">
     <div class="bg-white rounded p-8">
-        <h1 class="text-2xl mb-4">Create a Homework</h1>
+        <h1 class="text-2xl mb-4">Edit a Homework</h1>
 
         <form action="{{ route('homework.update', ['edit' => $homework->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="flex">
-                <div class="flex flex-col mr-8">
+            <div class="flex flex-col md:flex-row">
+                <div class="flex flex-col md:mr-8">
                     <div class="mb-4">
                         <label for="subject" class="">Mata Kuliah<span class="text-red-600">*</span></label>
                         <input type="text" name="subject" id="subject" placeholder="Mata Kuliah"
@@ -49,7 +49,7 @@
                 <div class="flex flex-col">
                     <div class="mb-4">
                         <label for="group" class="">Kelas</label>
-                        <input type="text" name="group" id="group" placeholder="Web dimana kamu mendapatkan informasi"
+                        <input type="text" name="group" id="group" placeholder="A / B"
                         class="p-2 rounded border @error('group') border-red-600 @enderror w-full bg-gray-100"
                         value="{{ old('group') ? old('group') : $homework->group }}">
                         @error('group')
@@ -88,7 +88,7 @@
                 <div class="mb-4">
                     <label for="details">Detail<span class="text-red-600">*</span></label>
                     <textarea class="p-2 rounded border @error('details') border-red-600 @enderror w-full bg-gray-100"
-                    name="details" id="details" cols="30" rows="10">{{ old('details') ? old('details') : $homework->details}}</textarea>
+                    name="details" id="details" cols="30" rows="10">{{ old('details') ? old('details') : $homework->details }}</textarea>
                     @error('details')
                         <div class="text-red-600">
                             {{ $message }}
@@ -96,17 +96,7 @@
                     @enderror
                 </div>
                 <div class="flex flex-col">
-                    <label for="file_attachments" class="mb-2">File Lampiran
-                        <input type="file" name="file_attachments" id="file_attachments">
-                    </label>
-                    @if ( isset($homework->file_attachments) )
-                    <div class="flex items-center">
-                        <span class="mr-2">Current File: </span>
-                        <span class="p-2 bg-gray-100 rounded border">
-                            {{ $homework->file_attachments }}
-                        </span>
-                    </div>
-                    @endif
+                    <div id="file-input" file="{{ old('file_attachments') ? old('file_attachments') : $homework->file_attachments }}"></div>
                     @error('file_attachments')
                         <div class="text-red-600">
                             {{ $message }}
@@ -125,12 +115,4 @@
             </div>
     </div>
 </div>
-
-<script>
-    let inputElement = document.getElementById('file_attachments');
-    if (inputElement.length)
-    function alertBeforeDelete() {
-        confirm('are you sure to delete this homework?')
-    }
-</script>
 @endsection

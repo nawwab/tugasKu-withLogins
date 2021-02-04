@@ -7,8 +7,8 @@
 
         <form action="{{ route('homework.store') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="flex">
-                <div class="flex flex-col mr-8">
+            <div class="flex flex-col md:flex-row">
+                <div class="flex flex-col md:mr-8">
                     <div class="mb-4">
                         <label for="subject" class="">Mata Kuliah<span class="text-red-600">*</span></label>
                         <input type="text" name="subject" id="subject" placeholder="Mata Kuliah"
@@ -48,7 +48,7 @@
                 <div class="flex flex-col">
                     <div class="mb-4">
                         <label for="group" class="">Kelas</label>
-                        <input type="text" name="group" id="group" placeholder="Web dimana kamu mendapatkan informasi"
+                        <input type="text" name="group" id="group" placeholder="A / B"
                         class="p-2 rounded border @error('group') border-red-600 @enderror w-full bg-gray-100"
                         value="{{ old('group') }}">
                         @error('group')
@@ -94,10 +94,13 @@
                         </div>
                     @enderror
                 </div>
-                <div class="">
-                    <label for="file_attachments">File Lampiran
-                        <input type="file" name="file_attachments" id="file_attachments">
-                    </label>
+                <div class="flex flex-col">
+                    <div id="file-input" file="{{ old('file_attachments') }}"></div>
+                    @error('file_attachments')
+                        <div class="text-red-600">
+                           {{ $message }}
+                        </div>
+                     @enderror
                 </div>
             </div>
             <button class="px-4 py-2 rounded bg-blue-500 w-full text-white" type="submit">Submit</button>
